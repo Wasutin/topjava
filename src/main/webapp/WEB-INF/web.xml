@@ -19,6 +19,11 @@
         <servlet-name>mealServlet</servlet-name>
         <servlet-class>ru.javawebinar.topjava.web.MealServlet</servlet-class>
     </servlet>
+
+    <!--Тэг servlet-mapping. -->
+    <!--Здесь мы определяем URL, который пользователь будет запрашивать для получения данных -->
+    <!--от нашего сервлета. Точнее будет сформулировать так: мы определяем какой сервлет будет-->
+    <!--обрабатывать введенный URL.-->
     <servlet-mapping>
         <servlet-name>mealServlet</servlet-name>
         <url-pattern>/meals</url-pattern>
