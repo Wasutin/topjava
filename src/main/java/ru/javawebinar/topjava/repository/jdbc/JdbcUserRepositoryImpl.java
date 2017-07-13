@@ -17,11 +17,29 @@ import java.util.List;
 @Repository
 public class JdbcUserRepositoryImpl implements UserRepository {
 
+
+ //{@link RowMapper} implementation that converts a row into a new instance
+ // of the specified mapped target class.
+
     private static final BeanPropertyRowMapper<User> ROW_MAPPER = BeanPropertyRowMapper.newInstance(User.class);
+
+//  This is the central class in the JDBC core package.
+//  It simplifies the use of JDBC and helps to avoid common errors.
+//  This class executes SQL queries or updates, initiating
+//  iteration over ResultSets
 
     private final JdbcTemplate jdbcTemplate;
 
+//    Template class with a basic set of JDBC operations, allowing the use
+//  of named parameters rather than traditional '?' placeholders.
+
     private final NamedParameterJdbcTemplate namedParameterJdbcTemplate;
+
+
+//    A SimpleJdbcInsert is a multi-threaded, reusable object providing easy insert
+//  capabilities for a table. It provides meta data processing to simplify the code
+//  needed to construct a basic insert statement. All you need to provide is the
+//  name of the table and a Map containing the column names and the column values.
 
     private final SimpleJdbcInsert insertUser;
 
@@ -37,6 +55,11 @@ public class JdbcUserRepositoryImpl implements UserRepository {
 
     @Override
     public User save(User user) {
+
+//   SqlParameterSource implementation that holds a given Map of parameters.
+//  This class is intended for passing in a simple Map of parameter values
+//  to the methods of the {@link NamedParameterJdbcTemplate} class.
+
         MapSqlParameterSource map = new MapSqlParameterSource()
                 .addValue("id", user.getId())
                 .addValue("name", user.getName())
